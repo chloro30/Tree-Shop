@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TREE Shop</title>
     <link rel="stylesheet" href="resource/css/reset.css">
-    <link rel="stylesheet" href="resource/css/style.css">
+    <!-- <link rel="stylesheet" href="resource/css/style.css"> -->
     <link rel="stylesheet" href="resource/swiper/swiper.css">
 </head>
 <body>
@@ -24,8 +24,8 @@
         global $result;
         while($row = mysqli_fetch_array($result)){
             echo "<li>";
-            echo "<p>><img src=\"{$row['imgsrc']}\" width='100px'></p>";
-            echo "<p>{$row['title']}</p>";
+            echo "<p><a href='web/product/view_product.php?no={$row['no']}'><img src=\"{$row['imgsrc']}\" width='100px'></p>";
+            echo "<p><a href='web/product/view_product.php?no={$row['no']}'>{$row['title']}</p>";
             echo "<p>{$row['price']}원</p>";
             echo "<p>{$row['date']}</p>";
             echo "</li>";
