@@ -23,11 +23,18 @@
     function showList(){
         global $result;
         while($row = mysqli_fetch_array($result)){
+            // 가격 자릿수 , 추가
+            $price = number_format($row['price']);
+
             echo "<li>";
-            echo "<p>><img src=\"{$row['imgsrc']}\" width='100px'></p>";
-            echo "<p>{$row['title']}</p>";
-            echo "<p>{$row['price']}원</p>";
-            echo "<p>{$row['date']}</p>";
+            echo "<p><a href='web/product/view_product.php?no={$row['no']}'><img src=\"{$row['imgsrc']}\" width='100px'></a></p>";
+            echo "<p><a href='web/product/view_product.php?no={$row['no']}'>{$row['title']}</a></p>";
+            echo "<p>{$price}원</p>";
+            echo "<div>
+                    <div><a href='web/product/view_product.php?no={$row['no']}'>상세보기</a></div>
+                    <div>장바구니 담기</div>
+                  </div>
+                  ";
             echo "</li>";
         }
     }
@@ -130,6 +137,18 @@
             </section>
             <footer>
                 <address>Copyright ⓒ 2021 All rights reserved.</address>
+                <div>
+                    <p>
+                        (주)Tree_shop<br/>
+                        대표이사 : 홍길동, 주소: 서울특별시 종로구<br/>
+                        사업자등록번호 : 512-12-12345, 통신판매업신고 : 1234-서울종로구-1234
+                    </p>
+                    <p>
+                        고객센터 1234-1234<br/>
+                        01234) 서울특별시 구로구<br/> 
+                        Fax : 02-4321-2345 / E-mail : customerservice@treeshop.com
+                    </p>
+                </div>
             </footer>
         </div>
     </div>
