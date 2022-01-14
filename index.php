@@ -32,7 +32,7 @@
             echo "<p>{$price}원</p>";
             echo "<div>
                     <div><a href='web/product/view_product.php?no={$row['no']}'>상세보기</a></div>
-                    <div>장바구니 담기</div>
+                    <div><a href='process/basket/add_basket.php?no={$row['no']}'>장바구니 담기</a></div>
                   </div>
                   ";
             echo "</li>";

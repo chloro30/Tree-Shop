@@ -14,7 +14,7 @@ CREATE TABLE member(
 );
     -- dummy data
     INSERT INTO member (id,pw,name,address,date)
-    VALUES ('admin','1234','관리자','(06167) 서울 강남구 테헤란로87길 29 (M타워) 55층',now());
+    VALUES ('admin','1234','관리자','(06167) 서울 강남구 테헤란로87길 55층',now());
     INSERT INTO member (id,pw,name,address,date)
     VALUES ('hong','1234','홍길동','한양시 강남구 대치동','1435-06-12');
     INSERT INTO member (id,pw,name,address,date)
@@ -57,8 +57,35 @@ CREATE TABLE product(
     SELECT * FROM product;
 
     
+-- basket 테이블
+DROP TABLE basket;
+CREATE TABLE basket(
+    no int PRIMARY KEY NOT NULL,
+    title varchar(50) NOT NULL,
+    price int NOT NULL,
+    imgsrc varchar(100) NOT NULL,
+    date datetime NOT NULL
+);
+
+    -- dummy data
+    INSERT INTO basket (no,title,price,imgsrc,date)
+    VALUES (998,'생수 판매',14000,'resource/img/product/삼다수.jpg','2021-11-07');
+    INSERT INTO basket (no,title,price,imgsrc,date)
+    VALUES (1003,'사과 1박스',21000,'resource/img/product/apple.jpg','2021-12-19 13:14:33');
+    
+    -- 조회
+    SELECT * FROM basket;
+    
+
 
 -- ###############################################################
+
+
+
+
+
+
+
 
 
 -- board 테이블
