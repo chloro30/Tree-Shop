@@ -94,21 +94,8 @@
             <button type="button" id="proDelBtn">삭제하기</button>
         </form>
     </div>
-    <button id="basket">장바구니 담기</button>
     
     <script>
-        const basketBtn = document.querySelector('#basket');
-
-        basketBtn.addEventListener('click',function(){
-        <?php
-            //쿠키 생성
-            setcookie("basket1",$_GET['no']); //계속 유지
-            $basket_cookie = $_COOKIE['basket1'];
-        ?>
-            
-            alert('쿠키: <?=$basket_cookie?>');
-        });
-
         //삭제 확인하기
         const proDelForm = document.querySelector('#proDelForm');
         const proDelBtn = document.querySelector('#proDelBtn');

@@ -51,7 +51,7 @@
                 </div>
                 <div id="menu">
                     <ul>
-                        <li>장바구니</li>
+                        <li><a href="web/basket/view.php">장바구니</a></li>
                         <?php
                             //세션 체크하기
                             session_start();

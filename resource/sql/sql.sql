@@ -68,10 +68,10 @@ CREATE TABLE basket(
 );
 
     -- dummy data
-    INSERT INTO basket (no,title,price,imgsrc,date)
-    VALUES (998,'생수 판매',14000,'resource/img/product/삼다수.jpg','2021-11-07');
-    INSERT INTO basket (no,title,price,imgsrc,date)
-    VALUES (1003,'사과 1박스',21000,'resource/img/product/apple.jpg','2021-12-19 13:14:33');
+    -- INSERT INTO basket (no,title,price,imgsrc,date)
+    -- VALUES (998,'생수 판매',14000,'resource/img/product/삼다수.jpg','2021-11-07');
+    -- INSERT INTO basket (no,title,price,imgsrc,date)
+    -- VALUES (1003,'사과 1박스',21000,'resource/img/product/apple.jpg','2021-12-19 13:14:33');
     
     -- 조회
     SELECT * FROM basket;
