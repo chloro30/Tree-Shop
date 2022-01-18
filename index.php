@@ -136,7 +136,6 @@
                 </div>
             </section>
             <footer>
-                <address>Copyright ⓒ 2021 All rights reserved.</address>
                 <div>
                     <p>
                         (주)Tree_shop<br/>
@@ -149,6 +148,7 @@
                         Fax : 02-4321-2345 / E-mail : customerservice@treeshop.com
                     </p>
                 </div>
+                <address>Copyright ⓒ 2021 All rights reserved.</address>
             </footer>
         </div>
     </div>
