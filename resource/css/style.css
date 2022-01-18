@@ -2,7 +2,7 @@ body {
   /* background-color: lightgray; */
 }
 
-#inner_contents {
+.inner_contents {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;

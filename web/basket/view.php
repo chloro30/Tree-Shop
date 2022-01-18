@@ -24,33 +24,29 @@
     $result = mysqli_query($conn,$sql);
 
 ?>
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <th>상품 이미지</th>
-                <th>상품명</th>
-                <th>가격</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                while($row = mysqli_fetch_array($result)){
-                    // 가격 자릿수 , 추가
-                    $price = number_format($row['price']);
-                        echo "<tr>";
-                        echo "<td><a href='../product/view_product.php?no={$row['no']}'><img src=\"../../{$row['imgsrc']}\" width='100px'></a></td>";
-                        echo "<td><a href='../product/view_product.php?no={$row['no']}'>{$row['title']}</a></td>";
-                        echo "<td>{$price}원</td>";
-                        echo "</tr>";
+    <div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>상품 이미지</th>
+                    <th>상품명</th>
+                    <th>가격</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    while($row = mysqli_fetch_array($result)){
+                        // 가격 자릿수 , 추가
+                        $price = number_format($row['price']);
+                            echo "<tr>";
+                            echo "<td><a href='../product/view_product.php?no={$row['no']}'><img src=\"../../{$row['imgsrc']}\" width='100px'></a></td>";
+                            echo "<td><a href='../product/view_product.php?no={$row['no']}'>{$row['title']}</a></td>";
+                            echo "<td>{$price}원</td>";
+                            echo "</tr>";
                     }
-            ?>
-        </tbody>
-    </table>
-
-
-
-
-
-
+                ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

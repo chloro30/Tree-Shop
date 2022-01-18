@@ -40,7 +40,7 @@
     }
 ?>
     <div id="wrap">
-        <div id="inner_contents">
+        <div class="inner_contents">
             <header>
                 <div id="logo">
                     <h1><a href="index.php">Tree Shop</a></h1>

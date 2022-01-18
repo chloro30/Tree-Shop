@@ -63,6 +63,7 @@
     </div>
     <div id="register">
         <button onclick="location.href='../member/register.php'">회원가입</button>
+        <p>관리자 id: admin, pw: 1234</p>
     </div>
     <script>
         const loginForm = document.querySelector('#loginForm');
