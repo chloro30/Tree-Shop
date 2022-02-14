@@ -12,8 +12,8 @@
 <body>
 <?php
     // $conn = mysqli_connect('localhost','root','1234','treeshop');
-    $conn = mysqli_connect('localhost','root','1005','treeshop'); //학원 비번 다름
-    // $conn = mysqli_connect('localhost','tree5432','q1w2e3r4!','tree5432'); //dothome phpmyAdMin 연결
+    // $conn = mysqli_connect('localhost','root','1005','treeshop'); //학원 비번 다름
+    $conn = mysqli_connect('localhost','tree5432','q1w2e3r4!','tree5432'); //dothome phpmyAdMin 연결
     $sql = "SELECT * FROM product
             ORDER BY no DESC
             LIMIT 8;
