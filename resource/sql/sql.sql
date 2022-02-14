@@ -53,7 +53,7 @@ CREATE TABLE product(
     INSERT INTO product (title,description,price,imgsrc,writer,date)
     VALUES ('해파리','해파리 냉채 재료',35500,'resource/img/product/해파리.jpg','관리자','2021-12-19 13:24:01');
     INSERT INTO product (title,description,price,imgsrc,writer,date)
-    VALUES ('가방','회사원 가방 판매합니다.',142500,'resource/img/product/bag.jpg','관리자','2022-01-12 14:14:11');
+    VALUES ('알록달록 전구','분위기 있는 알록달록 조명 판매합니다..',289400,'resource/img/product/light2.jpg','관리자','2022-01-12 14:14:11');
 
     -- 조회
     SELECT * FROM product;
