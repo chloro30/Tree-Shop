@@ -1,19 +1,8 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TREE Shop</title>
-    <link rel="stylesheet" href="resource/css/reset.css">
-    <link rel="stylesheet" href="resource/css/style.css">
-    <link rel="stylesheet" href="resource/swiper/swiper.css">
-</head>
-<body>
-<?php
+<?php include_once 'include/header.php'; ?>
+    <?php
     // $conn = mysqli_connect('localhost','root','1234','treeshop');
-    // $conn = mysqli_connect('localhost','root','1005','treeshop'); //학원 비번 다름
-    $conn = mysqli_connect('localhost','tree5432','q1w2e3r4!','tree5432'); //dothome phpmyAdMin 연결
+    $conn = mysqli_connect('localhost','root','1005','treeshop'); //학원 비번 다름
+    // $conn = mysqli_connect('localhost','tree5432','q1w2e3r4!','tree5432'); //dothome phpmyAdMin 연결
     $sql = "SELECT * FROM product
             ORDER BY no DESC
             LIMIT 8;
@@ -39,44 +28,6 @@
         }
     }
 ?>
-    <div id="wrap">
-        <div class="inner_contents">
-            <header>
-                <div id="logo">
-                    <h1><a href="index.php">Tree Shop</a></h1>
-                </div>
-                <div id="search_div">
-                    <input type="text" name="search" id="search">&nbsp;&nbsp;
-                    <div id="search_btn">검색</div>
-                </div>
-                <div id="menu">
-                    <ul>
-                        <li><a href="web/basket/view.php">장바구니</a></li>
-                        <?php
-                            //세션 체크하기
-                            session_start();
-
-                            if(isset($_SESSION['userNo'])){
-                                $userName = $_SESSION['userName'];
-                                $userNo = $_SESSION['userNo'];
-                        ?>
-                        <li><span><?=$userName?>(<?=$userNo?>)</span> 님</li>
-                        <form action="web/member/view.php" method="post">
-                            <input type="hidden" name="no" value="<?=$userNo?>">
-                            <li id="mypageLi"><input type="submit" id="mypageBtn" value="마이페이지"></li>
-                        </form>
-                        <li onclick='location.href="process/login/logout_process.php"'>로그아웃</li>
-                        <?php
-                            }else{
-                        ?>
-                        <li><a href="web/login/login.php">로그인</a></li>
-                        <li><a href="web/member/register.php">회원가입</a></li>
-                        <?php
-                            }
-                        ?>
-                    </ul>
-                </div>
-            </header>
             <section>
                 <!-- Swiper -->
                 <div class="swiper-container">

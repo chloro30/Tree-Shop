@@ -1,36 +1,5 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입</title>
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js" defer></script>
-    <script src="../../resource/js/zipcode.js"></script>
-    <style>
-        input {
-            width: 300px;
-            text-align: center;
-        }
-        h1 {
-            text-align: center;
-        }
-        table {
-            border-collapse: collapse;
-            width: 800px;
-            margin: 0 auto;
-            /* text-align: center; */
-        }
-        table, td {
-            border: 1px solid #ccc;
-        }
-        td {
-            padding: 16px;
-        }
-    </style>
-</head>
-<body>
-    <div id="wrap">
+<?php include_once '../../include/header.php'; ?>
+    <section id="register-wrap">
         <a href="../../index.php">홈으로</a><br>
         <h1><span>회원가입</span></h1>
         <form action="../../process/member/register_process.php" method="post" id="registerForm">
@@ -67,7 +36,9 @@
                 </tr>
             </table>
         </form>
-    </div>
+    </section>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js" defer></script>
+    <script src="../../resource/js/zipcode.js"></script>
     <script>
         const joinForm = document.querySelector('#registerForm');
         const joinBtn = document.querySelector('#registerBtn');
@@ -103,10 +74,8 @@
             }
         });
 
-
         //우편번호        
         const zipcodeBtn = document.querySelector('#zipcodeBtn');
-
         zipcodeBtn.addEventListener('click',DaumZipcode);
     </script>
 </body>

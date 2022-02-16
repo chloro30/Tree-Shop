@@ -36,34 +36,7 @@ header #logo h1 {
   /* cursor: pointer; */
 }
 
-header #search_div {
-  /* background-color: saddlebrown; */
-  width: 380px;
-  height: 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: absolute;
-  top: 30px;
-  left: 340px;
-}
-
-header #search_div input#search {
-  width: 80%;
-  padding: 8px;
-  border-radius: 6px;
-  border: 0;
-}
-
-header #search_div #search_btn {
-  background-color: lightgray;
-  width: 50px;
-  padding: 8px;
-  border-radius: 4px;
-}
-
 header #menu {
-  /* background-color: darksalmon; */
   width: 240px;
   height: 40px;
   position: absolute;
@@ -92,6 +65,7 @@ header #menu li {
   text-align: center;
   margin-left: 8px;
   padding: 10px 2px;
+  cursor: pointer;
 }
 
 header #menu li:nth-of-type(2) span {
@@ -111,7 +85,6 @@ header #menu li #mypageBtn {
 }
 
 section:nth-of-type(1) {
-  background-color: #f8efed;
   width: 100%;
   height: 480px;
   padding: 40px;
@@ -214,10 +187,76 @@ section .btns button {
 }
 
 section:nth-of-type(2) {
-  background-color: #f8efbf;
   width: 100%;
   padding: 40px;
   border-radius: 0 0 6px 16px;
+}
+
+section#login h1 {
+  text-align: center;
+}
+
+section#login table {
+  border-collapse: collapse;
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+section#login table, section#login td {
+  border: 1px solid #ccc;
+}
+
+section#login td {
+  padding: 16px;
+}
+
+section#login #loginBtnDiv {
+  background-color: lightblue;
+  width: 400px;
+  height: 40px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+section#login #loginBtnDiv button {
+  width: 100%;
+  height: 100%;
+}
+
+section#login #register {
+  width: 400px;
+  height: 40px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+section#login button {
+  cursor: pointer;
+}
+
+section#register-wrap input {
+  width: 300px;
+  text-align: center;
+}
+
+section#register-wrap h1 {
+  text-align: center;
+}
+
+section#register-wrap table {
+  border-collapse: collapse;
+  width: 800px;
+  margin: 0 auto;
+  /* text-align: center; */
+}
+
+section#register-wrap table, section#register-wrap td {
+  border: 1px solid #ccc;
+}
+
+section#register-wrap td {
+  padding: 16px;
 }
 
 footer {
