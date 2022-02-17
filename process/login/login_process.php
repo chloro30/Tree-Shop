@@ -5,8 +5,8 @@
 
     //DB연결
     // $conn = mysqli_connect('localhost','root','1234','treeshop');
-    // $conn = mysqli_connect('localhost','root','1005','treeshop'); //학원 DB 비번 다름
-    $conn = mysqli_connect('localhost','tree5432','q1w2e3r4!','tree5432'); //dothome phpmyAdMin 연결
+    $conn = mysqli_connect('localhost','root','1234','treeshop'); //학원 DB 비번 다름
+    // $conn = mysqli_connect('localhost','tree5432','q1w2e3r4!','tree5432'); //dothome phpmyAdMin 연결
 
     // 쿼리 작성 - 아이디와 패스워드가 DB에 등록된 정보와 일치하는 레코드 찾기
     $sql = "SELECT * FROM member

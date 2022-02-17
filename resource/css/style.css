@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   /* background-color: lightgray; */
 }
@@ -8,8 +9,9 @@ body {
   margin: 0 auto;
 }
 
+/* header */
 header {
-  background-color: #ec607a;
+  background-color: #cbdf82;
   width: 100%;
   height: 100px;
   position: relative;
@@ -57,7 +59,7 @@ header #menu ul {
   right: 0;
 }
 
-header #menu li {
+header #menu ul li {
   background-color: cornsilk;
   width: 80px;
   height: 100%;
@@ -69,39 +71,55 @@ header #menu li {
   cursor: pointer;
 }
 
-header #menu li:nth-of-type(2) span {
+header #menu ul li#user-name {
+  cursor: default;
+}
+
+header #menu ul li:nth-of-type(2) span {
   font-weight: bold;
 }
 
-header #menu li#mypageLi {
+header #menu ul li#mypageLi {
   padding: 0;
 }
 
-header #menu li #mypageBtn {
-  background-color: inherit;
-  border: 0;
-  width: 100%;
+header #menu #mypageBtn {
+  background-color: cornsilk;
+  width: 80px;
   height: 100%;
   font-size: 14px;
+  border: 0;
+  border-radius: 8px;
+  text-align: center;
+  margin-left: 8px;
+  padding: 10px 2px;
+  cursor: pointer;
 }
 
-section:nth-of-type(1) {
+/* 메인페이지 */
+section#swiper {
   width: 100%;
   height: 480px;
   padding: 40px;
 }
 
-.swiper-container {
+section#swiper .swiper-container {
   text-align: center;
 }
 
-section div#pro_list {
+section#product-list {
+  width: 100%;
+  padding: 40px;
+  border-radius: 0 0 6px 16px;
+}
+
+section#product-list div#pro_list {
   /* background-color: lightseagreen; */
   width: 100%;
   height: 500px;
 }
 
-section div#pro_list > ul {
+section#product-list div#pro_list > ul {
   /* background-color: lightsteelblue; */
   width: 100%;
   height: 100%;
@@ -119,29 +137,29 @@ section div#pro_list > ul {
           align-items: center;
 }
 
-section div#pro_list > ul > li {
+section#product-list div#pro_list > ul > li {
   width: 23%;
   border-radius: 8px;
   margin-bottom: 10px;
 }
 
-section div#pro_list > ul > li p {
+section#product-list div#pro_list > ul > li p {
   text-align: center;
   margin-top: 8px;
 }
 
-section div#pro_list > ul > li p img {
+section#product-list div#pro_list > ul > li p img {
   width: 95%;
   height: 120px;
   border-radius: 16px;
 }
 
-section div#pro_list > ul > li p:nth-of-type(2) {
+section#product-list div#pro_list > ul > li p:nth-of-type(2) {
   font-size: 20px;
   font-weight: bold;
 }
 
-section div#pro_list > ul > li p:nth-of-type(3) {
+section#product-list div#pro_list > ul > li p:nth-of-type(3) {
   background-color: #ffbb7b;
   width: 80%;
   margin: 0 auto;
@@ -151,7 +169,7 @@ section div#pro_list > ul > li p:nth-of-type(3) {
   border-radius: 8px;
 }
 
-section div#pro_list > ul > li > div {
+section#product-list div#pro_list > ul > li > div {
   margin-top: 10px;
   text-align: center;
   display: -webkit-box;
@@ -162,37 +180,32 @@ section div#pro_list > ul > li > div {
           justify-content: space-evenly;
 }
 
-section div#pro_list > ul > li > div div:first-child {
+section#product-list div#pro_list > ul > li > div div:first-child {
   background-color: #ffbff4;
   width: 45%;
   padding: 10px 0;
   border-radius: 10px;
 }
 
-section div#pro_list > ul > li > div div:nth-child(2) {
+section#product-list div#pro_list > ul > li > div div:nth-child(2) {
   background-color: #dfcef8;
   width: 45%;
   padding: 10px 0;
   border-radius: 10px;
 }
 
-section .btns {
+section#product-list .btns {
   margin-top: 50px;
   text-align: center;
 }
 
-section .btns button {
+section#product-list .btns button {
   width: 80px;
   height: 60px;
   cursor: pointer;
 }
 
-section:nth-of-type(2) {
-  width: 100%;
-  padding: 40px;
-  border-radius: 0 0 6px 16px;
-}
-
+/* 로그인 */
 section#login h1 {
   text-align: center;
 }
@@ -236,6 +249,7 @@ section#login button {
   cursor: pointer;
 }
 
+/* 회원가입 페이지 */
 section#register-wrap input {
   width: 300px;
   text-align: center;
@@ -260,7 +274,140 @@ section#register-wrap td {
   padding: 16px;
 }
 
+/* 회원 상세보기 */
+section#member-detail h1 {
+  text-align: center;
+}
+
+section#member-detail table {
+  border-collapse: collapse;
+  width: 800px;
+  margin: 0 auto;
+}
+
+section#member-detail table, section#member-detail td {
+  border: 1px solid #ccc;
+}
+
+section#member-detail td {
+  padding: 16px;
+}
+
+/* 회원 정보 수정*/
+section#member-edit h1 {
+  text-align: center;
+}
+
+section#member-edit table {
+  border-collapse: collapse;
+  width: 800px;
+  margin: 0 auto;
+}
+
+section#member-edit table, section#member-edit td {
+  border: 1px solid #ccc;
+}
+
+section#member-edit td {
+  padding: 16px;
+}
+
+/* 상품 등록하기 */
+section#product-create h1 {
+  text-align: center;
+}
+
+section#product-create table {
+  border-collapse: collapse;
+  width: 528px;
+  margin: 0 auto;
+}
+
+section#product-create table, section#product-create td {
+  border: 1px solid #ccc;
+}
+
+section#product-create td {
+  padding: 16px;
+}
+
+section#product-create td:nth-child(1) {
+  text-align: center;
+}
+
+/* 상품 상세보기 */
+section#product-view h1 {
+  text-align: center;
+}
+
+section#product-view table {
+  border-collapse: collapse;
+  width: 70%;
+  margin: 0 auto;
+}
+
+section#product-view table, section#product-view td {
+  border: 1px solid #ccc;
+}
+
+section#product-view td {
+  padding: 16px;
+}
+
+section#product-view p {
+  text-align: center;
+}
+
+section#product-view #btns {
+  width: 240px;
+  margin: 0 auto;
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+section#product-view #btns form {
+  display: inline;
+}
+
+section#product-view #basket {
+  position: absolute;
+  right: 200px;
+}
+
+/* 상품 수정하기 */
+section#product-edit h1 {
+  text-align: center;
+}
+
+section#product-edit table {
+  border-collapse: collapse;
+  width: 528px;
+  margin: 0 auto;
+}
+
+section#product-edit table, section#product-edit td {
+  border: 1px solid #ccc;
+}
+
+section#product-edit td {
+  padding: 16px;
+}
+
+section#product-edit td:nth-child(1) {
+  text-align: center;
+}
+
+section#product-edit #writer {
+  cursor: not-allowed;
+}
+
 footer {
+  background-color: lavenderblush;
   padding: 20px;
 }
 

@@ -77,6 +77,9 @@ CREATE TABLE basket(
     
     -- 조회
     SELECT * FROM basket;
+
+    -- 데이터 초기화
+    TRUNCATE TABLE basket;
     
 
 

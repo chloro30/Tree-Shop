@@ -1,6 +1,5 @@
 <?php include_once '../../include/header.php'; ?>
     <section id="register-wrap">
-        <a href="../../index.php">홈으로</a><br>
         <h1><span>회원가입</span></h1>
         <form action="../../process/member/register_process.php" method="post" id="registerForm">
             <table>
@@ -78,5 +77,4 @@
         const zipcodeBtn = document.querySelector('#zipcodeBtn');
         zipcodeBtn.addEventListener('click',DaumZipcode);
     </script>
-</body>
-</html>
+<?php include_once '../../include/footer.php'; ?>

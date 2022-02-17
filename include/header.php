@@ -28,10 +28,10 @@
                                 $userName = $_SESSION['userName'];
                                 $userNo = $_SESSION['userNo'];
                         ?>
-                        <li><span><?=$userName?>(<?=$userNo?>)</span> 님</li>
+                        <li id="user-name"><span><?=$userName?>(<?=$userNo?>)</span></li>
                         <form action="/Tree-Shop/web/member/view.php" method="post">
                             <input type="hidden" name="no" value="<?=$userNo?>">
-                            <li id="mypageLi"><input type="submit" id="mypageBtn" value="마이페이지"></li>
+                            <input type="submit" value="마이페이지" id="mypageBtn">
                         </form>
                         <li onclick="location.href='/Tree-Shop/process/login/logout_process.php'">로그아웃</li>
                         <?php

@@ -41,5 +41,4 @@
         });
 
     </script>
-</body>
-</html>
+<?php include_once '../../include/footer.php'; ?>
