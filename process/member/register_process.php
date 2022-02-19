@@ -13,10 +13,8 @@
 
     $address = "(".$zipcode.") ".$roadAddress." ".$detailAddress;
 
-    //DB에 연결
-    // $conn = mysqli_connect('localhost','root','1234','treeshop');
-    $conn = mysqli_connect('localhost','root','1234','treeshop');
-    // $conn = mysqli_connect('localhost','tree5432','q1w2e3r4!','tree5432'); //dothome phpmyAdMin 연결
+    //DB연결
+    include '../../config/conn.php';  //DB연결 정보 가져오기
 
     //sql문 작성
     $sql = "INSERT INTO member(id, pw, name, address, date)

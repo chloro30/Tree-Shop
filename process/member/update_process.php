@@ -9,10 +9,10 @@
     $address = "(".$zipcode.") ".$roadAddress." ".$detailAddress;
 
 
+    // echo $_POST['no'];
+
     //DB연결
-    // $conn = mysqli_connect('localhost','root','1234','treeshop');
-    $conn = mysqli_connect('localhost','root','1234','treeshop');
-    // $conn = mysqli_connect('localhost','tree5432','q1w2e3r4!','tree5432'); //dothome phpmyAdMin 연결
+    include '../../config/conn.php';  //DB연결 정보 가져오기
     
     $sql = "UPDATE member
             SET pw='{$pw}',
@@ -28,5 +28,9 @@
         echo "수정 실패";
     }
 
-    header('Location: ../../web/member/view.php?no='.$_POST['no']);
+    //POST로 받은 값을 그대로 리다이렉트 해주기 위해서 다음 코드를 추가
+    if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
+        header('HTTP/1.1 307 Temporary move');
+    }
+    header('Location: ../../web/member/view.php');
 ?>

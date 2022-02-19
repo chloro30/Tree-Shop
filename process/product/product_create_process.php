@@ -6,6 +6,7 @@
     $title = htmlspecialchars($_POST['title']);
     $desc = htmlspecialchars($_POST['desc']);
     $price = htmlspecialchars($_POST['price']);
+    $star =  htmlspecialchars($_POST['star']);
 
     //업로드한 파일의 타입 및 확장자 체크
     $file_type_arr = explode('/', $_FILES['file_img']['type']);
@@ -45,11 +46,10 @@
     }
 
     //DB연결
-    // $conn = mysqli_connect('localhost','root','1234','treeshop');
-    $conn = mysqli_connect('localhost','root','1234','treeshop');
-    // $conn = mysqli_connect('localhost','tree5432','q1w2e3r4!','tree5432'); //dothome phpmyAdMin 연결
-    $sql = "INSERT INTO product (title,description,price,imgsrc,writer,date)
-            VALUES ('{$title}','{$desc}',{$price},'resource/img/product/{$_FILES['file_img']['name']}','{$_POST['writer_hidden']}',now());
+    include '../../config/conn.php';  //DB연결 정보 가져오기
+    
+    $sql = "INSERT INTO product (title,description,price,imgsrc,writer,date,star)
+            VALUES ('{$title}','{$desc}',{$price},'resource/img/product/{$_FILES['file_img']['name']}','{$_POST['writer_hidden']}',now(),{$star});
            ";
 
 

@@ -13,12 +13,15 @@ header {
     background-color: rgb(203, 223, 130);
     width: 100%;
     height: 100px;
-    position: relative;
-
+    
+    .inner_contents {
+        position: relative;
+        height: 100%;
+    }
     #logo {
-        /* background-color: darkcyan; */
         width: 320px;
         height: 100%;
+
         display: flex;
         justify-content: center;
         align-items: center;
@@ -26,8 +29,6 @@ header {
         h1 {
         font-size: 48px;
         font-weight: bold;
-
-        /* cursor: pointer; */
         }
     
     }
@@ -94,7 +95,9 @@ section {
     &#swiper {
         // background-color: #f8efed;
         width: 100%;
+        max-width: 1200px;
         height: 480px;
+        margin: 0 auto;
         padding: 40px;
         .swiper-container {
             text-align: center;
@@ -102,6 +105,8 @@ section {
     }
     &#product-list {
         width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
         padding: 40px;
         border-radius: 0 0 6px 16px;
         
@@ -135,38 +140,26 @@ section {
                             border-radius: 16px;
                         }
                         &:nth-of-type(2) {
-                            font-size: 20px;
+                            font-size: 14px;
                             font-weight: bold;
                         }
                         &:nth-of-type(3) {
-                            background-color: #ffbb7b;
+                            // background-color: #eee;
+                            // font-size: 16px;
+                            // color: #666;
+                            img {
+                                width: auto;
+                                height: 20px;
+                            }
+                        }
+                        &:nth-of-type(4) {
+                            // background-color: #ffbb7b;
                             width: 80%;
                             margin: 0 auto;
                             margin-top: 4px;
                             text-align: center;
                             line-height: 40px;
                             border-radius: 8px;
-                        }
-                    }
-                    > div {
-                        // background-color: silver;
-                        margin-top: 10px;
-                        text-align: center;
-                        
-                        display: flex;
-                        justify-content: space-evenly;
-                        
-                        div:first-child {
-                            background-color: #ffbff4;
-                            width: 45%;
-                            padding: 10px 0;
-                            border-radius: 10px;
-                        }
-                        div:nth-child(2) {
-                            background-color: #dfcef8;
-                            width: 45%;
-                            padding: 10px 0;
-                            border-radius: 10px;
                         }
                     }
                 }
@@ -188,6 +181,10 @@ section {
 
 /* 로그인 */
 section#login {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 0;
     h1 {
         text-align: center;
     }
@@ -227,6 +224,10 @@ section#login {
 
 /* 회원가입 페이지 */
 section#register-wrap {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 0;
     input {
         width: 300px;
         text-align: center;
@@ -250,6 +251,10 @@ section#register-wrap {
 
 /* 회원 상세보기 */
 section#member-detail {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 0;
     h1 {
         text-align: center;
     }
@@ -263,11 +268,20 @@ section#member-detail {
     }
     td {
         padding: 16px;
+    }
+    .btns {
+        margin: 0 auto;
+        width: 200px;
+        display: flex;
+        justify-content: space-between;
     }
 }
 
 /* 회원 정보 수정*/
 section#member-edit {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
     h1 {
         text-align: center;
     }
@@ -282,10 +296,19 @@ section#member-edit {
     td {
         padding: 16px;
     }
+    #updateBtn {
+        display: block;
+        // background-color: rebeccapurple;
+        margin: 0 auto;
+    }
 }
 
 /* 상품 등록하기 */
 section#product-create {
+    // background-color: tan;
+    // width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
     h1 {
         text-align: center;
     }
@@ -307,6 +330,11 @@ section#product-create {
 
 /* 상품 상세보기 */
 section#product-view {
+    // background-color: tan;
+    // width: 80%;
+    // max-width: 1200px;
+    // margin: 0 auto;
+    padding: 50px 0;
     h1 {
         text-align: center;
     }
@@ -340,6 +368,11 @@ section#product-view {
 
 /* 상품 수정하기 */
 section#product-edit {
+    // background-color: tan;
+    // width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 0;
     h1 {
         text-align: center;
     }
@@ -362,15 +395,90 @@ section#product-edit {
     }
 }
 
+/* 장바구니 */
+section#basket {
+    // background-color: tan;
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+    padding: 50px 0;
+    table {
+        // background-color: teal;
+        width: 80%;
+        height: 600px;
+        margin: 0 auto;
+        border-bottom: 1px solid #eee;
+        // border-collapse: collapse;
+        tr {
+            // border: 1px solid #eee;
+        }
+        thead {
+            // background-color: #ffbb7b;
+            height: 40px;
+            tr {
+                th{
+                    border-top: 1px solid #eee;
+                    border-bottom: 1px solid #eee;
+                    &:nth-child(1){
+                        // background-color: antiquewhite;
+                    }
+                    &:nth-child(2){
+                        // background-color: silver;
+                        width: 70%;
+                    }
+                    &:nth-child(3){
+                        // background-color: wheat;
+                        width: 15%;
+                    }
 
-// footer
+                }
+            }
+        }
+        tbody {
+            tr {
+                // background-color: #ffbb7b;
+                &:nth-child(odd) {
+                    background-color: #eee;
+                }
+                &:last-child {
+                    background-color: #ccc;
+                    // height: 50px;
+                }
+                td {
+                    text-align: center;
+                    &:nth-child(1) {
+                        // background-color: #ccc;
+                        img {
+                            width: 90%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .total {
+        // background-color: #dfcef8;
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        padding: 20px 0;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+    }
+}
+
+
+/* footer */
 footer {
     background-color: lavenderblush;
     padding: 20px;
-    div {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        display: flex;
-        justify-content: space-between;
+    .inner_contents {
+        div {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
     }
 }

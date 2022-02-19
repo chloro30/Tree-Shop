@@ -12,6 +12,7 @@ CREATE TABLE member(
     address varchar(200) NOT NULL,
     date datetime NOT NULL
 );
+
     -- dummy data
     INSERT INTO member (id,pw,name,address,date)
     VALUES ('admin','1234','관리자','(06167) 서울 강남구 테헤란로87길 55층',now());
@@ -22,6 +23,9 @@ CREATE TABLE member(
 
     -- 조회
     SELECT * FROM member;
+    
+    -- 데이터 초기화
+    TRUNCATE TABLE member;
 
 
 -- product 테이블
@@ -33,30 +37,35 @@ CREATE TABLE product(
     price int NOT NULL,
     imgsrc varchar(100) NOT NULL,
     writer varchar(20) NOT NULL,
-    date datetime NOT NULL
+    date datetime NOT NULL,
+    star double NOT NuLL
 );
 
-    -- dummy data
-    INSERT INTO product (no,title,description,price,imgsrc,writer,date)
-    VALUES (998,'생수 판매','생수 판매 합니다. 관심 있으시면 연락주세요.',14000,'resource/img/product/삼다수.jpg','관리자','2021-11-07');
-    INSERT INTO product (no,title,description,price,imgsrc,writer,date)
-    VALUES (999,'S21 휴대폰','삼성 휴대폰 판매중입니다. 관심 있으시면 연락주세요.',1230000,'resource/img/product/galaxy-s21-5g.jpg','관리자','2021-12-16');
+   
     
-    INSERT INTO product (title,description,price,imgsrc,writer,date)
-    VALUES ('제주도 여행권','제주도 2박 3일 여행권 판매中',500000,'resource/img/product/바닷가.jpg','관리자','2021-12-18 20:23:35');
-    INSERT INTO product (title,description,price,imgsrc,writer,date)
-    VALUES ('딸기 1kg','빨간 딸기 맛있겠당',23000,'resource/img/product/strawberry.jpg','관리자','2021-12-18 20:24:18');
-    INSERT INTO product (title,description,price,imgsrc,writer,date)
-    VALUES ('바나나 10kg','바나나는 길어, 길면 기차',55000,'resource/img/product/banana.jpg','관리자','2021-12-18 21:11:02');
-    INSERT INTO product (title,description,price,imgsrc,writer,date)
-    VALUES ('사과 1박스','사과 1kg 팝니다 2만 1천원!!',21000,'resource/img/product/apple.jpg','관리자','2021-12-19 13:14:33');
-    INSERT INTO product (title,description,price,imgsrc,writer,date)
-    VALUES ('해파리','해파리 냉채 재료',35500,'resource/img/product/해파리.jpg','관리자','2021-12-19 13:24:01');
-    INSERT INTO product (title,description,price,imgsrc,writer,date)
-    VALUES ('알록달록 전구','분위기 있는 알록달록 조명 판매합니다..',289400,'resource/img/product/light2.jpg','관리자','2022-01-12 14:14:11');
+    -- dummy data
+    INSERT INTO product (no,title,description,price,imgsrc,writer,date,star)
+    VALUES (998,'생수 판매','제주특별자치도개발공사 삼다수 무라벨 그린생수 2L',14000,'resource/img/product/삼다수.jpg','관리자','2021-11-07',4.5);
+    INSERT INTO product (no,title,description,price,imgsrc,writer,date,star)
+    VALUES (999,'S22 울트라','2022년 최신 휴대폰 삼성 갤럭시 S22 Ultra 독보적 성능을 구현하는 4 nm 칩',1230000,'resource/img/product/s22_ultra.jpg','관리자','2021-12-16',5);
+    INSERT INTO product (title,description,price,imgsrc,writer,date,star)
+    VALUES ('제주도 여행권','제주도 2박 3일 여행권 판매 中',500000,'resource/img/product/바닷가.jpg','관리자','2021-12-18 20:23:35',3);
+    INSERT INTO product (title,description,price,imgsrc,writer,date,star)
+    VALUES ('딸기 1kg','정성담은 무농약 킹스베리 딸기 대왕',23000,'resource/img/product/strawberry.jpg','관리자','2021-12-18 20:24:18',2);
+    INSERT INTO product (title,description,price,imgsrc,writer,date,star)
+    VALUES ('바나나 10kg','필리핀 바나나 10kg 한박스 스위트 마운틴',55000,'resource/img/product/banana.jpg','관리자','2021-12-18 21:11:02',3.5);
+    INSERT INTO product (title,description,price,imgsrc,writer,date,star)
+    VALUES ('사과 1박스','사과 1kg 팝니다 2만 1천원!!',21000,'resource/img/product/apple.jpg','관리자','2021-12-19 13:14:33',1);
+    INSERT INTO product (title,description,price,imgsrc,writer,date,star)
+    VALUES ('해파리','해파리 냉채 재료',35500,'resource/img/product/해파리.jpg','관리자','2021-12-19 13:24:01',4);
+    INSERT INTO product (title,description,price,imgsrc,writer,date,star)
+    VALUES ('알록달록 전구','분위기 있는 알록달록 조명 판매합니다..',289400,'resource/img/product/light2.jpg','관리자','2022-01-12 14:14:11',2.5);
 
     -- 조회
     SELECT * FROM product;
+
+     -- 데이터 초기화
+    TRUNCATE TABLE product;
 
     
 -- basket 테이블

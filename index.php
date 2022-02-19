@@ -1,92 +1,177 @@
-<?php include_once 'include/header.php'; ?>
-    <?php
-    // $conn = mysqli_connect('localhost','root','1234','treeshop');
-    $conn = mysqli_connect('localhost','root','1234','treeshop'); //학원 비번 다름
-    // $conn = mysqli_connect('localhost','tree5432','q1w2e3r4!','tree5432'); //dothome phpmyAdMin 연결
-    $sql = "SELECT * FROM product
-            ORDER BY no DESC
-            LIMIT 8;
-           ";
-    $result = mysqli_query($conn,$sql);
-
-    function showList(){
-        global $result;
-        while($row = mysqli_fetch_array($result)){
-            // 가격 자릿수 , 추가
-            $price = number_format($row['price']);
-
-            echo "<li>";
-            echo "<p><a href='web/product/view_product.php?no={$row['no']}'><img src=\"{$row['imgsrc']}\" width='100px'></a></p>";
-            echo "<p><a href='web/product/view_product.php?no={$row['no']}'>{$row['title']}</a></p>";
-            echo "<p>{$price}원</p>";
-            echo "<div>
-                    <div><a href='web/product/view_product.php?no={$row['no']}'>상세보기</a></div>
-                    <div><a href='process/basket/add_basket.php?no={$row['no']}'>장바구니 담기</a></div>
-                  </div>
-                  ";
-            echo "</li>";
-        }
-    }
-?>
-            <section id="swiper">
-                <!-- Swiper -->
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="resource/img/swiper/슬라이드1.jpg" alt="슬라이드1"></div>
-                        <div class="swiper-slide"><img src="resource/img/swiper/슬라이드2.jpg" alt="슬라이드2"></div>
-                        <div class="swiper-slide"><img src="resource/img/swiper/슬라이드3.jpg" alt="슬라이드3"></div>
-                        <div class="swiper-slide"><img src="resource/img/swiper/슬라이드4.jpg" alt="슬라이드4"></div>
-                    </div>
-                    <!-- Add Pagination -->
-                    <div class="swiper-pagination"></div>
-                    <!-- Add Arrows -->
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TREE Shop</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="resource/css/reset.css">
+    <link rel="stylesheet" href="resource/css/style.css">
+    <link rel="stylesheet" href="resource/swiper/swiper.css">
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <div class="inner_contents">
+                <div id="logo">
+                    <h1><a href="./index.php">Tree Shop</a></h1>
                 </div>
-                <!-- Swiper JS -->
-                <script src="resource/swiper/swiper.min.js"></script>
-
-                <!-- Initialize Swiper -->
-                <script>
-                var swiper = new Swiper('.swiper-container', {
-                    pagination: '.swiper-pagination',
-                    nextButton: '.swiper-button-next',
-                    prevButton: '.swiper-button-prev',
-                    slidesPerView: 1,
-                    paginationClickable: true,
-                    spaceBetween: 30, //슬라이드 사이 여백
-                    loop: true,
-                    autoplay: 3000, //재생 속도
-                    autoplayDisableOnInteraction: false, //이전, 다음 클릭했을 때 다시 자동 재생하기
-                });
-                </script>
-                <!-- Swiper end -->
-            </section>
-            <section id="product-list">
-                <div id="pro_list">
+                <div id="menu">
                     <ul>
-                        <?php showList() ?>
-                        <!-- <li>
-                            <p><img src="resource/img/달리기.jpg" alt="상품이미지"></p>
-                            <p><span>달리기</span></p>
-                            <p><span>10,000원</span></p>
-                        </li> -->
+                        <li onclick="location.href='web/basket/view.php'">장바구니</li>
+                        <?php
+                            //세션 체크하기
+                            session_start();
+
+                            if(isset($_SESSION['userNo'])){
+                                $userName = $_SESSION['userName'];
+                                $userNo = $_SESSION['userNo'];
+                        ?>
+                        <li id="user-name"><span><?=$userName?>(<?=$userNo?>)</span></li>
+                        <form action="web/member/view.php" method="post">
+                            <input type="hidden" name="no" value="<?=$userNo?>">
+                            <input type="submit" value="마이페이지" id="mypageBtn">
+                        </form>
+                        <li onclick="location.href='process/login/logout_process.php'">로그아웃</li>
+                        <?php
+                            }else{
+                        ?>
+                        <li onclick="location.href='web/login/login.php'">로그인</li>
+                        <li onclick="location.href='web/member/register.php'">회원가입</li>
+                        <?php
+                            }
+                        ?>
                     </ul>
                 </div>
-                <div class="btns">
-                    <?php
-                        //세션의 아이디가 admin일 때만 등록하기 버튼 생성
-                        session_start();
-    
-                        if(isset($_SESSION['userNo']) && ($_SESSION['userNo']==1)){
-                    ?>
-                        <button onclick="location.href='web/product/create_product.php'">상품 등록</button>
-                    <?php
-                        }
-                    ?>
+            </div>
+        </header>
+        <?php
+            include 'config/conn.php';  //DB연결 정보 가져오기
+
+            $sql = "SELECT * FROM product
+                    ORDER BY no DESC
+                    LIMIT 8;
+                ";
+            $result = mysqli_query($conn,$sql);
+
+            function showList(){
+                global $result;
+                while($row = mysqli_fetch_array($result)){
+                    // 가격 자릿수 , 추가
+                    $price = number_format($row['price']);
+                    $sub = substr($row['description'], 0, 28);
+                    
+                    echo "<li><a href='web/product/view_product.php?no={$row['no']}'>";
+                    echo "<p><img src=\"{$row['imgsrc']}\" width='100px'></p>";
+                    echo "<p>{$row['title']}</p>";
+
+                    switch ($row['star']) {
+                        case 0:
+                            echo "<p><img src=\"resource/img/product/star/Star_rating_0_of_5.png\" width='100px'></p>";
+                            break;
+                        case 0.5:
+                            echo "<p><img src=\"resource/img/product/star/Star_rating_0.5_of_5.png\" width='100px'></p>";
+                            break;
+                        case 1:
+                            echo "<p><img src=\"resource/img/product/star/Star_rating_1_of_5.png\" width='100px'></p>";
+                            break;
+                        case 1.5:
+                            echo "<p><img src=\"resource/img/product/star/Star_rating_1.5_of_5.png\" width='100px'></p>";
+                            break;
+                        case 2:
+                            echo "<p><img src=\"resource/img/product/star/Star_rating_2_of_5.png\" width='100px'></p>";
+                            break;
+                        case 2.5:
+                            echo "<p><img src=\"resource/img/product/star/Star_rating_2.5_of_5.png\" width='100px'></p>";
+                            break;
+                        case 3:
+                            echo "<p><img src=\"resource/img/product/star/Star_rating_3_of_5.png\" width='100px'></p>";
+                            break;
+                        case 3.5:
+                            echo "<p><img src=\"resource/img/product/star/Star_rating_3.5_of_5.png\" width='100px'></p>";
+                            break;
+                        case 4:
+                            echo "<p><img src=\"resource/img/product/star/Star_rating_4_of_5.png\" width='100px'></p>";
+                            break;
+                        case 4.5:
+                            echo "<p><img src=\"resource/img/product/star/Star_rating_4.5_of_5.png\" width='100px'></p>";
+                            break;
+                        case 5:
+                            echo "<p><img src=\"resource/img/product/star/Star_rating_5_of_5.png\" width='100px'></p>";
+                            break;
+
+                        default:
+                            # code...
+                            break;
+                    }
+
+
+                    echo "<p><strong>{$price}</strong>원</p>";
+                    echo "</a></li>";
+                }
+            }
+        ?>
+        <section id="swiper">
+            <!-- Swiper -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="resource/img/swiper/슬라이드1.jpg" alt="슬라이드1"></div>
+                    <div class="swiper-slide"><img src="resource/img/swiper/슬라이드2.jpg" alt="슬라이드2"></div>
+                    <div class="swiper-slide"><img src="resource/img/swiper/슬라이드3.jpg" alt="슬라이드3"></div>
+                    <div class="swiper-slide"><img src="resource/img/swiper/슬라이드4.jpg" alt="슬라이드4"></div>
                 </div>
-            </section>
-            <footer>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+            <!-- Swiper JS -->
+            <script src="resource/swiper/swiper.min.js"></script>
+
+            <!-- Initialize Swiper -->
+            <script>
+            var swiper = new Swiper('.swiper-container', {
+                pagination: '.swiper-pagination',
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                slidesPerView: 1,
+                paginationClickable: true,
+                spaceBetween: 30, //슬라이드 사이 여백
+                loop: true,
+                autoplay: 3000, //재생 속도
+                autoplayDisableOnInteraction: false, //이전, 다음 클릭했을 때 다시 자동 재생하기
+            });
+            </script>
+            <!-- Swiper end -->
+        </section>
+        <section id="product-list">
+            <div id="pro_list">
+                <ul>
+                    <?php showList() ?>
+                    <!-- <li>
+                        <p><img src="resource/img/달리기.jpg" alt="상품이미지"></p>
+                        <p><span>달리기</span></p>
+                        <p><span>10,000원</span></p>
+                    </li> -->
+                </ul>
+            </div>
+            <div class="btns">
+                <?php
+                    //세션의 아이디가 admin일 때만 등록하기 버튼 생성
+                    session_start();
+
+                    if(isset($_SESSION['userNo']) && ($_SESSION['userNo']==1)){
+                ?>
+                    <button onclick="location.href='web/product/create_product.php'">상품 등록</button>
+                <?php
+                    }
+                ?>
+            </div>
+        </section>
+        <footer>
+            <div class="inner_contents">
                 <div>
                     <p>
                         (주)Tree_shop<br/>
@@ -100,8 +185,8 @@
                     </p>
                 </div>
                 <address>Copyright ⓒ 2021 All rights reserved.</address>
-            </footer>
-        </div>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

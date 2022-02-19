@@ -40,16 +40,16 @@
     }
 
     //DB연결
-    // $conn = mysqli_connect('localhost','root','1234','treeshop');
-    $conn = mysqli_connect('localhost','root','1234','treeshop');
-    // $conn = mysqli_connect('localhost','tree5432','q1w2e3r4!','tree5432'); //dothome phpmyAdMin 연결
+    include '../../config/conn.php';  //DB연결 정보 가져오기
+    
     $sql = "UPDATE product
             SET title='{$_POST['title']}',
                 description='{$_POST['desc']}',
                 price='{$_POST['price']}',
                 imgsrc='resource/img/product/{$_FILES['file_img']['name']}',
                 writer='{$_POST['writer_hidden']}',
-                date=now()
+                date=now(),
+                star='{$_POST['star']}'
             WHERE no = {$_POST['no']};
            ";
     // echo $sql;

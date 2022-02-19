@@ -2,25 +2,50 @@
     $_GET['no'];
     // echo $_GET['no'];
 
-    // $conn = mysqli_connect('localhost','root','1234','treeshop');
-    $conn = mysqli_connect('localhost','root','1234','treeshop'); //학원 비번 다름
-    // $conn = mysqli_connect('localhost','tree5432','q1w2e3r4!','tree5432'); //dothome phpmyAdMin 연결
-    $sql = "SELECT * FROM product
+    //DB연결
+    include '../../config/conn.php';  //DB연결 정보 가져오기
+    
+
+    //현재 장바구니에 담긴 상품인지 조회
+    $sql = "SELECT * FROM basket
             WHERE no = {$_GET['no']};
            ";
     // echo $sql;
-
-    $result = mysqli_query($conn,$sql);
-
-    while($row = mysqli_fetch_array($result)){
+    echo "<br/>";
     
-        // basket 테이블에 추가하기
-        $sql = "INSERT INTO basket (no, title, price, imgsrc, date)
-                VALUES ('{$row['no']}', '{$row['title']}', {$row['price']}, '{$row['imgsrc']}', now());
-               ";
-        // echo $sql;
-    }
+    $result2 = mysqli_query($conn,$sql);
+    $row2 = mysqli_fetch_array($result2);
+    
+    if($row2){
+?>
 
+        <script>
+            alert('이미 장바구니에 담으셨습니다!');
+        </script>
+
+<?php
+    }else {
+        $sql = "SELECT * FROM product
+                WHERE no = {$_GET['no']};
+           ";
+        // echo $sql;
+
+        $result = mysqli_query($conn,$sql);
+
+        while($row = mysqli_fetch_array($result)){
+            
+            // basket 테이블에 추가하기
+            $sql = "INSERT INTO basket (no, title, price, imgsrc, date)
+                    VALUES ('{$row['no']}', '{$row['title']}', {$row['price']}, '{$row['imgsrc']}', now());
+                ";
+            // echo $sql;
+        }
+?>
+        <script>
+            alert('장바구니에 추가되었습니다!');
+        </script>
+<?php
+    }
 
     $result = mysqli_query($conn,$sql);
     if($result){
@@ -30,7 +55,6 @@
     }
 ?>
 <script>
-    alert('장바구니에 추가되었습니다!');
     // 페이지 이동
     location.href = "../../index.php";
 </script>

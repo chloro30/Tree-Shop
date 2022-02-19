@@ -3,9 +3,7 @@
     $no = $_POST['no'];
 
     //DB연결
-    // $conn = mysqli_connect('localhost','root','1234','treeshop');
-    $conn = mysqli_connect('localhost','root','1234','treeshop'); //학원 비번 다름
-    // $conn = mysqli_connect('localhost','tree5432','q1w2e3r4!','tree5432'); //dothome phpmyAdMin 연결
+    include '../../config/conn.php';  //DB연결 정보 가져오기
 
 
     // 쿼리 작성
